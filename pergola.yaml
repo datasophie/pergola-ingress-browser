@@ -1,0 +1,15 @@
+version: v1
+
+components:
+- name: browser
+  docker:
+    file: Dockerfile
+  ports:
+  - 5050
+  ingresses:
+  - host: app
+  identity: ingress-browser
+  env:
+  - name: PERGOLA_UI_URL
+    config-ref: PERGOLA_UI_URL
+    value: ""

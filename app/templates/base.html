@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Pergola Ingress Browser</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="icon" href="{{ url_for('static', filename='img/pergola.ico') }}">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/custom.css') }}">
+    </head>
+
+    <body>
+      <div id="navbar" class="container-nav">
+        <nav class="navbar navbar-expand-lg bg-light">
+          <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='img/pergola_logo.png') }}" width="200px" class="d-inline-block align-top" alt="">
+          </a>
+          <span class="navbar-text">Ingresses deployed on Pergola</span>
+        </nav>
+      </div>
+
+        {% block content %}{% endblock %}
+
+        <footer class="footer">
+          <div class="container-fluid">
+                <p class="text-muted">
+                  {% block footer %}{% endblock %}
+                </p>
+          </div>
+        </footer>
+
+    </body>
+
+    <script src="{{ url_for('static', filename='script/bootstrap.bundle.min.js') }}"></script>
+
+</html>

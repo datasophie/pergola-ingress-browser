@@ -1,0 +1,10 @@
+version: '3'
+services:
+  pergola-ingress-browser:
+    build: .
+    environment:
+      PERGOLA_UI_URL: "https://console.pergola.mycompany.com"
+    ports:
+    - "5050:5050"
+    volumes:
+    - ${HOME}/.kube/config:/root/.kube/config:ro

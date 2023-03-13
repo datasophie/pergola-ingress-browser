@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid table-responsive">
+  <table id="ingresses" class="table table-striped table-hover" data-search="true">
+    <thead>
+      <tr>
+        <th class="project">Project</th>
+        <th class="stage">Stage</th>
+        <th class="component">Component</th>
+        <th class="network">Network</th>
+        <th class="auth">Auth</th>
+        <th class="url">Ingress URL</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for ingress in data.ingresses %}
+      <tr>
+        <td class="project">
+          {% if ingress.project.url %}
+          <a href="{{ingress.project.url}}" target="_blank" rel="noopener noreferrer">{{ingress.project.name}}</a>
+          {% else %}
+          {{ingress.project.name}}
+          {% endif %}
+        </td>
+        <td class="stage">
+          {% if ingress.stage.url %}
+          <a href="{{ingress.stage.url}}" target="_blank" rel="noopener noreferrer">{{ingress.stage.name}}</a>
+          {% else %}
+          {{ingress.stage.name}}
+          {% endif %}
+        </td>
+        <td class="component">{{ingress.component.name}}</a></td>
+        <td class="network">{{ingress.provider.name}}</td>
+        {% if ingress.provider.auth %}
+        <td class="auth text-success">{{ingress.provider.auth}}</td>
+        {% else %}
+        <td class="auth text-warning">N/A</td>
+        {% endif %}
+        <td class="url">
+          {% for url in ingress.provider.urls %}
+          <div><a href="{{url}}" target="_blank" rel="noopener noreferrer">{{url}}</a></div>
+          {% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block footer %}
+<small>Total: {{data.total}} ingresses (time: {{data.time_elapsed_ms}}ms / cpu: {{data.proc_elapsed_ms}}ms)</small>
+{% endblock %}
