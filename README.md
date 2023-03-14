@@ -57,9 +57,7 @@ Requires Python >= 3.8
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-export FLASK_APP=app
-export FLASK_ENV=development
-flask run
+flask --app app run --debug
 ```
 
 ### With Docker
